@@ -212,9 +212,10 @@
         }
         
         .btn:hover {
-            color: var(--primary);
+            color:#ff4d4d;
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(255, 77, 77, 0.3);
+    
         }
         
         .btn::before {
@@ -613,6 +614,9 @@
     color: var(--light);
 }
 
+#hirebutton:hover {
+    color:#ff4d4d
+}
 .footer-about h3 span {
     color: var(--primary);
 }
@@ -787,6 +791,7 @@
             .hero-content h3 {
                 font-size: 20px;
             }
+        
             
             .btn-box {
                 flex-direction: column;
@@ -847,7 +852,7 @@
             
             <div class="btn-box">
                 <a href="#portfolio" class="btn">My Work</a>
-                <a href="https://wa.me/7850806883" class="btn">Hire Me</a>              
+                <a href="https://wa.me/7850806883" class="btn" id="hirebutton">Hire Me</a>              
 
             </div>
         </div>
@@ -1013,7 +1018,7 @@
             
             setTimeout(() => {
                 preloader.style.display = 'none';
-            }, 500);
+            }, 250);
         });
         
         // Sticky Header
