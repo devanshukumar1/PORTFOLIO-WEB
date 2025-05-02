@@ -377,131 +377,138 @@
             margin-bottom: 60px;
         }
         
-        .filter-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-        
-        .filter-btn {
-            padding: 10px 20px;
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--light);
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: var(--primary);
-            color: var(--dark);
-        }
-        
-        .portfolio-gallery {
+        /* Vimeo Gallery Styles */
+        .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
-        .portfolio-item {
-            position: relative;
-            border-radius: 10px;
+        .video-item {
+            background: var(--secondary);
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
         }
         
-        .portfolio-item:hover {
-            transform: translateY(-10px);
+        .video-item:hover {
+            transform: translateY(-5px);
         }
         
-        .portfolio-item video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+        .thumbnail {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
         }
         
-        .portfolio-overlay {
+        .thumbnail img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            object-fit: cover;
+        }
+        
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(30, 173, 255, 0.8);
+            border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            justify-content: center;
         }
         
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
+        .play-icon::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-left: 20px solid white;
+            margin-left: 5px;
         }
         
-        .portfolio-overlay i {
-            font-size: 60px;
+        .video-info {
+            padding: 15px;
+        }
+        
+        .video-info h3 {
+            margin: 0 0 10px;
+            font-size: 16px;
             color: var(--light);
-            cursor: pointer;
-            transition: transform 0.3s ease, color 0.3s ease;
         }
         
-        .portfolio-overlay i:hover {
-            color: var(--primary);
-            transform: scale(1.1);
+        .video-info p {
+            margin: 0;
+            color: #aaa;
+            font-size: 14px;
         }
         
-        /* Video Modal */
-        .video-modal {
+        /* Popup styles */
+        .popup-overlay {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.9);
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            transition: opacity 0.3s, visibility 0.3s;
         }
         
-        .video-modal.active {
+        .popup-overlay.active {
             opacity: 1;
             visibility: visible;
         }
         
-        .modal-content {
+        .popup-content {
             position: relative;
-            width: 80%;
-            max-width: 1000px;
+            width: 90%;
+            max-width: 900px;
         }
         
-        .modal-content video {
-            width: 100%;
-            border-radius: 10px;
-        }
-        
-        .close-modal {
+        .close-btn {
             position: absolute;
             top: -40px;
             right: 0;
-            color: var(--light);
+            color: white;
             font-size: 30px;
             cursor: pointer;
-            transition: color 0.3s ease;
+            background: none;
+            border: none;
         }
         
-        .close-modal:hover {
-            color: var(--primary);
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
         
         /* Contact Section */
@@ -590,140 +597,138 @@
         }
         
         footer {
-    padding: 80px 10% 30px;
-    background: var(--dark);
-    position: relative;
-}
+            padding: 80px 10% 30px;
+            background: var(--dark);
+            position: relative;
+        }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-bottom: 60px;
-}
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
 
-.footer-about {
-    flex: 1;
-    min-width: 300px;
-}
+        .footer-about {
+            flex: 1;
+            min-width: 300px;
+        }
 
-.footer-about h3 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: var(--light);
-}
+        .footer-about h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
 
-#hirebutton:hover {
-    color:#ff4d4d
-}
-.footer-about h3 span {
-    color: var(--primary);
-}
+        #hirebutton:hover {
+            color:#ff4d4d
+        }
+        .footer-about h3 span {
+            color: var(--primary);
+        }
 
-.footer-about p {
-    opacity: 0.8;
-    line-height: 1.6;
-}
+        .footer-about p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
 
-.footer-links {
-    flex: 1;
-    min-width: 200px;
-}
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
 
-.footer-links h3 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: var(--light);
-}
+        .footer-links h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
 
-.footer-links ul {
-    list-style: none;
-}
+        .footer-links ul {
+            list-style: none;
+        }
 
-.footer-links li {
-    margin-bottom: 10px;
-}
+        .footer-links li {
+            margin-bottom: 10px;
+        }
 
-.footer-links a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
 
-.footer-links a:hover {
-    color: var(--primary);
-    transform: translateX(5px);
-}
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
 
-.footer-contact {
-    flex: 1;
-    min-width: 300px;
-}
+        .footer-contact {
+            flex: 1;
+            min-width: 300px;
+        }
 
-.footer-contact h3 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: var(--light);
-}
+        .footer-contact h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
 
-.footer-contact p {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    opacity: 0.8;
-}
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            opacity: 0.8;
+        }
 
-.footer-contact i {
-    margin-right: 10px;
-    color: var(--primary);
-    width: 20px;
-    text-align: center;
-}
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
 
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.footer-bottom p {
-    opacity: 0.7;
-    font-size: 14px;
-}
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 14px;
+        }
 
-.footer-social {
-    display: flex;
-    gap: 15px;
-}
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
 
-.footer-social a {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    color: var(--light);
-    font-size: 18px;
-    transition: all 0.3s ease;
-}
+        .footer-social a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--light);
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
 
-.footer-social a:hover {
-    background: var(--primary);
-    color: var(--dark);
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
-}
+        .footer-social a:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+        }
 
-
-        
         /* Responsive Design */
         @media (max-width: 992px) {
             header {
@@ -808,7 +813,7 @@
                 gap: 15px;
             }
             
-            .portfolio-gallery {
+            .gallery {
                 grid-template-columns: 1fr;
             }
             
@@ -817,8 +822,7 @@
             }
         }
     </style>
-        <link rel="icon" href="camera_24dp_E3E3E3.png" type="image/x-icon">
-
+    <link rel="icon" href="camera_24dp_E3E3E3.png" type="image/x-icon">
 </head>
 <body>
     <!-- Preloader -->
@@ -853,7 +857,6 @@
             <div class="btn-box">
                 <a href="#portfolio" class="btn">My Work</a>
                 <a href="https://wa.me/7850806883" class="btn" id="hirebutton">Hire Me</a>              
-
             </div>
         </div>
         
@@ -927,12 +930,116 @@
     <section class="portfolio" id="portfolio">
         <h2 class="heading">My <span>Portfolio</span></h2>
         
+        <div class="gallery">
+            <!-- Video Item 1 -->
+            <div class="video-item" data-vimeo-id="1080173463">
+                <div class="thumbnail">
+                    <img src="_A744869.JPG" alt="Video Thumbnail">
+                    <div class="play-icon"></div>
+                </div>
+                <div class="video-info">
+                    <h3>SMC Summit Aftermovie</h3>
+                    <p>3:05 • HD Resolution</p>
+                </div>
+            </div>
+            
+                 <!-- Video Item 6 -->
+                 <div class="video-item" data-vimeo-id="1080167142">
+                    <div class="thumbnail">
+                      <img src="bmw-m5-4k-hj157aevcjevfu9x.jpg" alt="Video Thumbnail">
+                       <div class="play-icon"></div>
+                    </div>
+                     <div class="video-info">
+                          <h3>Ace Club Showreel</h3>
+                     <p>00:39 • 1080p Resolution</p>
+                     </div>
+                   </div>                  
+        
+            <!-- Video Item 2 -->
+            <div class="video-item" data-vimeo-id="1080168945">
+                <div class="thumbnail">
+                    <img src="44317424_1685769924862739_4817634209986248704_n.jpg" alt="Video Thumbnail">
+                    <div class="play-icon"></div>
+                </div>
+                <div class="video-info">
+                    <h3>ITC Fairmont Showreel</h3>
+                    <p>0:44 • HD Resolution</p>
+                </div>
+            </div>
+            
+            <!-- Video Item 3 -->
+            <div class="video-item" data-vimeo-id="1080171060">
+                <div class="thumbnail">
+                    <img src="Screenshot 2025-04-30 201029.png" alt="Video Thumbnail">
+                    <div class="play-icon"></div>
+                </div>
+                <div class="video-info">
+                    <h3>Samarth Band Aftermovie</h3>
+                    <p>0:35 • 1080p Resolution</p>
+                </div>
+            </div>
+            
+            <!-- Video Item 4 -->
+            <div class="video-item" data-vimeo-id="1080247486">
+                <div class="thumbnail">
+                    <img src="Screenshot 2025-04-30 210854.png" alt="Video Thumbnail">
+                    <div class="play-icon"></div>
+                </div>
+                <div class="video-info">
+                    <h3>MNIT Ganpati Utsav Aftermovie</h3>
+                    <p>01:00 • 1080p Resolution</p>
+                </div>
+            </div>
+
+                        <!-- Video Item 5 -->
+
+            <div class="video-item" data-vimeo-id="1080169976">
+                <div class="thumbnail">
+                    <img src="Screenshot 2025-05-01 171507_upscayl_4x_realesrgan-x4plus.png" alt="Video Thumbnail">
+                    <div class="play-icon"></div>
+                </div>
+                <div class="video-info">
+                    <h3>Podcast Showreel</h3>
+                    <p>01:05 • 1080p Resolution</p>
+                </div>
+            </div>
+                        <!-- Video Item 6 -->
+              <div class="video-item" data-vimeo-id="1080188264">
+                    <div class="thumbnail">
+                      <img src="Screenshot 2025-04-23 190244_upscayl_4x_realesrgan-x4plus.png" alt="Video Thumbnail">
+                       <div class="play-icon"></div>
+                    </div>
+                     <div class="video-info">
+                          <h3>Jaipur Modern Caterers Showreel</h3>
+                     <p>00:31 • 1080p Resolution</p>
+                     </div>
+                   </div>
+                        
+           <!-- Video Item 6 -->
+           <div class="video-item" data-vimeo-id="1080183381">
+            <div class="thumbnail">
+              <img src="istockphoto-1419988769-612x612.jpg" alt="Video Thumbnail">
+               <div class="play-icon"></div>
+            </div>
+             <div class="video-info">
+                  <h3>Porsche 3d Render</h3>
+             <p>00:15 • 1080p Resolution</p>
+             </div>
+           </div>                  
 
         
-<!-- Elfsight Vimeo Gallery | Untitled Vimeo Gallery -->
-<script src="https://static.elfsight.com/platform/platform.js" async></script>
-<div class="elfsight-app-8d2b49d4-47fc-424e-a3a9-c6aafc139317" data-elfsight-app-lazy></div>
-
+        </div>
+        
+        
+        <!-- Popup Overlay -->
+        <div class="popup-overlay">
+            <div class="popup-content">
+                <button class="close-btn">&times;</button>
+                <div class="video-container">
+                    <!-- Vimeo iframe will be inserted here -->
+                </div>
+            </div>
+        </div>
     </section>
     
     <!-- Contact Section -->
@@ -940,25 +1047,24 @@
         <h2 class="heading">Contact <span>Me</span></h2>
         
         <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
-           
             <input type="hidden" name="access-key" value="5bae559e-856b-4f01-8167-24c538db97ce">
             <div class="input-box">
-                <input type="text" required>
+                <input type="text" name="name" required>
                 <label>Name</label>
             </div>
             
             <div class="input-box">
-                <input type="email" required>
+                <input type="email" name="email" required>
                 <label>Email</label>
             </div>
             
             <div class="input-box">
-                <input type="text" required>
+                <input type="text" name="subject" required>
                 <label>Subject</label>
             </div>
             
             <div class="input-box">
-                <textarea required></textarea>
+                <textarea name="message" required></textarea>
                 <label>Your Message</label>
             </div>
             <input type="hidden" name="redirect" value="https://web3forms.com/success">
@@ -968,10 +1074,6 @@
     
     <!-- Footer -->
     <footer>
-        
-   
-        </div>
-            <!-- Footer -->
         <div class="footer-content">
             <div class="footer-about">
                 <h3>ThePixel<span>Poet</span></h3>
@@ -1002,12 +1104,9 @@
             <div class="footer-social">
                 <a href="https://www.instagram.com/_thepixelpoet/"><i class="fab fa-instagram"></i></a>
                 <a href="https://vimeo.com/showcase/11688733"><i class="fab fa-vimeo"></i></a>
-
                 <a href="https://www.linkedin.com/in/devanshu-kumar-014525275"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
-   
-    
     </footer>
     
     <script>
@@ -1083,57 +1182,66 @@
             });
         });
         
-        // Portfolio Filtering
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-        
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Add active class to clicked button
-                this.classList.add('active');
-                
-                const filterValue = this.getAttribute('data-filter');
-                
-                portfolioItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
+        // Vimeo Video Popup Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoItems = document.querySelectorAll('.video-item');
+            const popupOverlay = document.querySelector('.popup-overlay');
+            const closeBtn = document.querySelector('.close-btn');
+            const videoContainer = document.querySelector('.video-container');
+            
+            // Add click event to each video item
+            videoItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const vimeoId = this.getAttribute('data-vimeo-id');
+                    
+                    // Create Vimeo iframe
+                    const iframe = document.createElement('iframe');
+                    iframe.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&color=00adef&title=0&byline=0&portrait=0`;
+                    iframe.allow = 'autoplay; fullscreen';
+                    iframe.allowFullscreen = true;
+                    
+                    // Clear previous iframe and add new one
+                    videoContainer.innerHTML = '';
+                    videoContainer.appendChild(iframe);
+                    
+                    // Show popup
+                    popupOverlay.classList.add('active');
+                    
+                    // Pause background video if exists
+                    const heroVideo = document.querySelector('.hero video');
+                    if (heroVideo) {
+                        heroVideo.pause();
                     }
                 });
             });
-        });
-        
-        // Video Modal
-        const portfolioOverlays = document.querySelectorAll('.portfolio-overlay i');
-        const videoModal = document.querySelector('.video-modal');
-        const modalVideo = document.querySelector('.video-modal video');
-        const closeModal = document.querySelector('.close-modal');
-        
-        portfolioOverlays.forEach(overlay => {
-            overlay.addEventListener('click', function() {
-                const videoSrc = this.getAttribute('data-video');
-                modalVideo.setAttribute('src', videoSrc);
-                videoModal.classList.add('active');
-                modalVideo.play();
+            
+            // Close popup when clicking close button or overlay
+            closeBtn.addEventListener('click', function() {
+                closePopup();
             });
-        });
-        
-        closeModal.addEventListener('click', function() {
-            videoModal.classList.remove('active');
-            modalVideo.pause();
-            modalVideo.currentTime = 0;
-        });
-        
-        // Close modal when clicking outside
-        videoModal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                videoModal.classList.remove('active');
-                modalVideo.pause();
-                modalVideo.currentTime = 0;
+            
+            popupOverlay.addEventListener('click', function(e) {
+                if (e.target === popupOverlay) {
+                    closePopup();
+                }
+            });
+            
+            // Close popup when pressing Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closePopup();
+                }
+            });
+            
+            function closePopup() {
+                popupOverlay.classList.remove('active');
+                videoContainer.innerHTML = ''; // Remove iframe when closing
+                
+                // Resume background video if exists
+                const heroVideo = document.querySelector('.hero video');
+                if (heroVideo) {
+                    heroVideo.play();
+                }
             }
         });
         
